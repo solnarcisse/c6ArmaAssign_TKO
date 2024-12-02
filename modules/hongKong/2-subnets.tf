@@ -1,5 +1,5 @@
 #These are   for  public
-resource "aws_subnet" "public-us-east-2a" {
+resource "aws_subnet" "public-ap-east-1a" {
   vpc_id                  = var.vpc_id
   cidr_block              = var.public_subnet_params[3].subnet_cidr
   availability_zone       = var.availability_zones[3]
@@ -15,7 +15,7 @@ resource "aws_subnet" "public-us-east-2a" {
 
 
 #these are for private
-resource "aws_subnet" "private-us-east-2a" {
+resource "aws_subnet" "private-ap-east-1a" {
   vpc_id            = var.vpc_id
   cidr_block        = var.private_subnet_params[4].subnet_cidr
   availability_zone = var.availability_zones[4]

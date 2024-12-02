@@ -1,6 +1,6 @@
-provider "aws" {
-  region = "ap-northeast-1"
-}
+# provider "aws" {
+#   region = "ap-northeast-1"
+# }
 
 # provider "aws" {
 #   alias  = "ap-northeast-1"

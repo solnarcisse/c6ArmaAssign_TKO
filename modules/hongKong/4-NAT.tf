@@ -8,7 +8,7 @@ resource "aws_eip" "myApp_nat" {
 
 resource "aws_nat_gateway" "myApp_nat" {
   allocation_id = aws_eip.myApp_nat.id
-  subnet_id     = aws_subnet.public-us-east-2a.id
+  subnet_id     = aws_subnet.public-ap-east-1a.id
 
   tags = {
     Name = "myApp_nat"

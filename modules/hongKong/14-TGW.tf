@@ -9,11 +9,11 @@ resource "aws_ec2_transit_gateway" "myApp_TGW" {
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "TGA-tokyo" {
-  subnet_ids         = [aws_subnet.public-us-east-2a.id]
+  subnet_ids         = [aws_subnet.public-ap-east-1a.id]
   transit_gateway_id = aws_ec2_transit_gateway.myApp_TGW.id
   vpc_id             = var.vpc_id
 
   tags = {
-    Name = "TGA-OHIO-VPC-1-PROD"
+    Name = "TGA-HongKong-VPC-1-PROD"
   }
 }
