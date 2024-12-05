@@ -1,3 +1,12 @@
+# terraform {
+#   required_providers {
+#     aws = {
+#       source  = "hashicorp/aws"
+#       version = "~> 3.0"
+#     }
+#   }
+# }
+
 # provider "aws" {
 #   region = "ap-northeast-1"
 # }
@@ -45,7 +54,7 @@
 # us-east-1
 
 # London
-# eu-west2
+# eu-west-2
 
 # Sao Paulo
 # sa-east-1

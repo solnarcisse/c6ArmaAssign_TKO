@@ -39,16 +39,12 @@ variable "private_subnet_params" {
   }))
 }
 
-variable "default_subnet_params" {
-  description = "public subnet parameters"
-  type = list(object({
-    subnet_cidr = string
-    subnet_name = string
-  }))
-}
 
 variable "availability_zones" {
   description = "availability zone"
-  type        = list(string)
+  type = list(object({
+    zone = string
+    name = string
+  }))
 }
 

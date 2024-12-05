@@ -38,7 +38,7 @@ resource "aws_vpc" "hong-kong" {
 # }
 
 module "tokyo" {
-  source                = "./modules/tokyo"
+  source                = "./modules/1-tokyo"
   vpc_id                = aws_vpc.tokyo.id
   vpc_params            = var.vpc_params
   public_subnet_params  = var.public_subnet_params
@@ -47,7 +47,7 @@ module "tokyo" {
 }
 
 module "hongKong" {
-  source                = "./modules/hongKong"
+  source                = "./modules/6-hongKong"
   vpc_id                = aws_vpc.hong-kong.id
   vpc_params            = var.vpc_params
   public_subnet_params  = var.public_subnet_params
