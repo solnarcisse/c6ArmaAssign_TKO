@@ -2,61 +2,9 @@
 
 #VPCs
 
-#Subnets
-##public
-# output "public-us-east-2a" {
-#   value = aws_subnet.public-us-east-2a.id
-# }
-
-# output "public-us-east-2b" {
-#   value = aws_subnet.public-us-east-2b.id
-# }
-
-# output "public-us-east-2c" {
-#   value = aws_subnet.public-us-east-2c.id
-# }
-
-# output "dev-public-us-east-2a" {
-#   value = aws_subnet.dev-public-us-east-2a.id
-# }
-
-# output "dev-public-us-east-2b" {
-#   value = aws_subnet.dev-public-us-east-2b.id
-# }
-
-# output "dev-public-us-east-2c" {
-#   value = aws_subnet.dev-public-us-east-2c.id
-# }
-
-# ##private
-# output "private-us-east-2a" {
-#   value = aws_subnet.private-us-east-2a.id
-# }
-
-# output "private-us-east-2b" {
-#   value = aws_subnet.private-us-east-2b.id
-# }
-
-# output "private-us-east-2c" {
-#   value = aws_subnet.private-us-east-2c.id
-# }
-
-# output "dev-private-us-east-2a" {
-#   value = aws_subnet.private-us-east-2a.id
-# }
-
-# output "dev-private-us-east-2b" {
-#   value = aws_subnet.private-us-east-2b.id
-# }
-
-# output "dev-private-us-east-2c" {
-#   value = aws_subnet.private-us-east-2c.id
-# }
-
-
-# ##default
-# output "defaultSubnet-us-east-2a" {
-#   value = aws_subnet.defaultSubnet-us-east-2a.id
+# output "vpc_id" {
+#   value       = module.vpc_ha_prod.vpc_id
+#   description = "VPC ID"
 # }
 
 # #Load Balancers
