@@ -3,3 +3,10 @@ variable vpc_params{}
 variable public_subnet_params{}
 variable private_subnet_params{}
 variable availability_zones{}
+variable regions{}
+variable newYork_myApp_TGW{}
+variable london_myApp_TGW{}
+variable saoPaulo_myApp_TGW{}
+variable australia_myApp_TGW{}
+variable HK_myApp_TGW{}
+variable calif_myApp_TGW{}

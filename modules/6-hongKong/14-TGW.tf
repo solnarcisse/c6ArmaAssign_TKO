@@ -14,6 +14,6 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "TGA-HK" {
   vpc_id             = var.vpc_id
 
   tags = {
-    Name = "TGA-HongKong-VPC-1-PROD"
+    Name = "TGA-HONG-KONG-VPC-1-PROD"
   }
 }

@@ -1,3 +1,5 @@
+data "aws_caller_identity" "current" {}
+
 resource "aws_vpc" "tokyo" {
   cidr_block = var.vpc_params[0].vpc_cidr
 
@@ -95,6 +97,14 @@ module "tokyo" {
   public_subnet_params  = var.public_subnet_params
   private_subnet_params = var.private_subnet_params
   availability_zones    = var.availability_zones
+  regions               = var.regions
+
+  newYork_myApp_TGW   = module.newYork.newYork_myApp_TGW
+  london_myApp_TGW    = module.london.london_myApp_TGW
+  saoPaulo_myApp_TGW  = module.saoPaulo.saoPaulo_myApp_TGW
+  australia_myApp_TGW = module.australia.australia_myApp_TGW
+  HK_myApp_TGW        = module.hongKong.HK_myApp_TGW
+  calif_myApp_TGW     = module.california.calif_myApp_TGW
 }
 
 module "newYork" {
@@ -104,6 +114,8 @@ module "newYork" {
   public_subnet_params  = var.public_subnet_params
   private_subnet_params = var.private_subnet_params
   availability_zones    = var.availability_zones
+  regions               = var.regions
+
 }
 
 module "london" {
@@ -113,6 +125,7 @@ module "london" {
   public_subnet_params  = var.public_subnet_params
   private_subnet_params = var.private_subnet_params
   availability_zones    = var.availability_zones
+  regions               = var.regions
 }
 
 module "saoPaulo" {
@@ -122,6 +135,7 @@ module "saoPaulo" {
   public_subnet_params  = var.public_subnet_params
   private_subnet_params = var.private_subnet_params
   availability_zones    = var.availability_zones
+  regions               = var.regions
 }
 
 module "australia" {
@@ -131,6 +145,7 @@ module "australia" {
   public_subnet_params  = var.public_subnet_params
   private_subnet_params = var.private_subnet_params
   availability_zones    = var.availability_zones
+  regions               = var.regions
 }
 
 module "hongKong" {
@@ -140,6 +155,7 @@ module "hongKong" {
   public_subnet_params  = var.public_subnet_params
   private_subnet_params = var.private_subnet_params
   availability_zones    = var.availability_zones
+  regions               = var.regions
 }
 
 module "california" {
@@ -149,4 +165,5 @@ module "california" {
   public_subnet_params  = var.public_subnet_params
   private_subnet_params = var.private_subnet_params
   availability_zones    = var.availability_zones
+  regions               = var.regions
 }

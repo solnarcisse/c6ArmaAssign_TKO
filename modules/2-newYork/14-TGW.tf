@@ -1,10 +1,10 @@
 resource "aws_ec2_transit_gateway" "newYork_myApp_TGW" {
-  description                     = "myApp transit gateway"
+  description                     = "New York myApp transit gateway"
   default_route_table_association = "disable"
   default_route_table_propagation = "disable"
 
   tags = {
-    Name = "myApp_TGW"
+    Name = "newYork_myApp_TGW"
   }
 }
 
@@ -14,6 +14,6 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "TGA-new-york" {
   vpc_id             = var.vpc_id
 
   tags = {
-    Name = "TGA-TOKYO-VPC-1-PROD"
+    Name = "TGA-NEW-YORK-VPC-1-PROD"
   }
 }
