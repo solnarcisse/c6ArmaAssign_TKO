@@ -21,7 +21,7 @@ resource "aws_subnet" "private-ap-east-1a" {
   availability_zone = var.availability_zones[15].zone
 
   tags = {
-    Name    = var.private_subnet_params[4].subnet_name
+    Name    = var.private_subnet_params[15].subnet_name
     Service = "application1"
     Owner   = "Uhuru"
     Funct   = "ProdPriv"
