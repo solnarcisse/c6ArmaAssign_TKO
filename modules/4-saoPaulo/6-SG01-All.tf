@@ -1,7 +1,7 @@
 resource "aws_security_group" "app1-sg01-servers" {
   name        = "app1-sg01-servers"
   description = "app1-sg01-servers"
-  vpc_id      = aws_vpc.app1.id
+  vpc_id      = var.vpc_id
 
   ingress {
     description = "MyHomePage"
@@ -11,21 +11,21 @@ resource "aws_security_group" "app1-sg01-servers" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  ingress {
-    description = "SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  # ingress {
+  #   description = "SSH"
+  #   from_port   = 22
+  #   to_port     = 22
+  #   protocol    = "tcp"
+  #   cidr_blocks = ["0.0.0.0/0"]
+  # }
 
-  ingress {
-    description = "MyEvilBox"
-    from_port   = 3389
-    to_port     = 3389
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  # ingress {
+  #   description = "MyEvilBox"
+  #   from_port   = 3389
+  #   to_port     = 3389
+  #   protocol    = "tcp"
+  #   cidr_blocks = ["0.0.0.0/0"]
+  # }
 
   egress {
     from_port   = 0
@@ -33,12 +33,9 @@ resource "aws_security_group" "app1-sg01-servers" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
   tags = {
     Name    = "app1-sg01-servers"
     Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
   }
 
 }
@@ -50,7 +47,7 @@ resource "aws_security_group" "app1-sg01-servers" {
 resource "aws_security_group" "app1-sg02-LB01" {
   name        = "app1-sg02-LB01"
   description = "app1-sg02-LB01"
-  vpc_id      = aws_vpc.app1.id
+  vpc_id      = var.vpc_id
 
   ingress {
     description = "MyHomePage"
@@ -68,19 +65,17 @@ resource "aws_security_group" "app1-sg02-LB01" {
   }
 
   
-ingress {
-    description = "MyEvilBox"
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+# ingress {
+#     description = "MyEvilBox"
+#     from_port   = 443
+#     to_port     = 443
+#     protocol    = "tcp"
+#     cidr_blocks = ["0.0.0.0/0"]
+#   }
 
   tags = {
     Name    = "app1-sg02-LB01"
     Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
   }
 
 }

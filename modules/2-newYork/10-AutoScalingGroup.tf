@@ -4,9 +4,9 @@ resource "aws_autoscaling_group" "NY_asg" {
   max_size              = 8
   desired_capacity      = 4
   vpc_zone_identifier   = [
-    aws_subnet.private-us-east-1a.id,
-    aws_subnet.private-us-east-1b.id,
-    # aws_subnet.private-us-east-1c.id
+    aws_subnet.public-us-east-1a.id,
+    # aws_subnet.private-us-east-1b.id,
+    aws_subnet.public-us-east-1c.id
   ]
   health_check_type          = "ELB"
   health_check_grace_period  = 300
@@ -75,5 +75,5 @@ resource "aws_autoscaling_policy" "NY_scaling_policy" {
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "NY_asg_attachment" {
   autoscaling_group_name = aws_autoscaling_group.NY_asg.name
-  alb_target_group_arn   = aws_lb_target_group.NY_tg.arn
+  lb_target_group_arn   = aws_lb_target_group.NY_tg.arn
 }

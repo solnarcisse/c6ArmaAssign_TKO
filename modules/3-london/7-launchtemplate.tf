@@ -3,7 +3,7 @@ resource "aws_launch_template" "Test-VPC01-LT" {
   image_id      = "ami-0c76bd4bd302b30ec"  
   instance_type = "t2.micro"
 
-  key_name = "Linux02Key"
+  # key_name = "Linux02Key"
 
   vpc_security_group_ids = [aws_security_group.Test-VPC01-SG01-TG01.id]
 
@@ -58,8 +58,6 @@ resource "aws_launch_template" "Test-VPC01-LT" {
     tags = {
       Name    = "Test-VPC01_LT"
       Service = "application1"
-      Owner   = "Chewbacca"
-      Planet  = "Mustafar"
     }
   }
 

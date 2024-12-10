@@ -1,87 +1,71 @@
 #These are   for  public
 
 resource "aws_subnet" "public-sa-east-1a" {
-  vpc_id                  = aws_vpc.app1.id
-  cidr_block              = "10.103.1.0/24"
-  availability_zone       = "sa-east-1a"
+  vpc_id                  = var.vpc_id
+  cidr_block              = var.public_subnet_params[9].subnet_cidr
+  availability_zone       = var.availability_zones[9].zone
   map_public_ip_on_launch = true
 
   tags = {
-    Name    = "public-sa-east-1a"
+    Name    = var.public_subnet_params[9].subnet_name
     Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
   }
 }
 
-/*resource "aws_subnet" "public-sa-east-1b" {
-  vpc_id                  = aws_vpc.app1.id
-  cidr_block              = "10.103.2.0/24"
-  availability_zone       = "sa-east-1b"
-  map_public_ip_on_launch = true
+# resource "aws_subnet" "public-sa-east-1b" {
+#   vpc_id                  = var.vpc_id
+#   cidr_block              = var.public_subnet_params[10].subnet_cidr
+#   availability_zone       = var.availability_zones[10].zone
+#   map_public_ip_on_launch = true
 
-  tags = {
-    Name    = "public-sa-east-1b"
-    Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
-  }
-}
-*/
+#   tags = {
+#     Name    = var.public_subnet_params[10].subnet_name
+#     Service = "application1"
+#   }
+# }
 
 
 resource "aws_subnet" "public-sa-east-1c" {
-  vpc_id                  = aws_vpc.app1.id
-  cidr_block              = "10.103.3.0/24"
-  availability_zone       = "sa-east-1c"
+  vpc_id                  = var.vpc_id
+  cidr_block              = var.public_subnet_params[11].subnet_cidr
+  availability_zone       = var.availability_zones[11].zone
   map_public_ip_on_launch = true
 
   tags = {
-    Name    = "public-sa-east-1c"
+    Name    = var.public_subnet_params[11].subnet_name
     Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
   }
 }
 
 #these are for private
-resource "aws_subnet" "private-sa-east-1a" {
-  vpc_id            = aws_vpc.app1.id
-  cidr_block        = "10.103.11.0/24"
-  availability_zone = "sa-east-1a"
+# resource "aws_subnet" "private-sa-east-1a" {
+#   vpc_id                  = var.vpc_id
+#   cidr_block              = var.private_subnet_params[9].subnet_cidr
+#   availability_zone       = var.availability_zones[9].zone
+#   tags = {
+#     Name    = var.private_subnet_params[9].subnet_name
+#     Service = "application1"
+#   }
+# }
 
-  tags = {
-    Name    = "private-sa-east-1a"
-    Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
-  }
-}
-
-/*resource "aws_subnet" "private-sa-east-1b" {
-  vpc_id            = aws_vpc.app1.id
-  cidr_block        = "10.103.12.0/24"
-  availability_zone = "sa-east-1b"
-
-  tags = {
-    Name    = "private-sa-east-1b"
-    Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
-  }
-}
-*/
+# resource "aws_subnet" "private-sa-east-1b" {
+#   vpc_id                  = var.vpc_id
+#   cidr_block              = var.private_subnet_params[10].subnet_cidr
+#   availability_zone       = var.availability_zones[10].zone
+#   tags = {
+#     Name    = var.private_subnet_params[10].subnet_name
+#     Service = "application1"
+#   }
+# }
+#
 
 
 resource "aws_subnet" "private-sa-east-1c" {
-  vpc_id            = aws_vpc.app1.id
-  cidr_block        = "10.103.13.0/24"
-  availability_zone = "sa-east-1c"
-
+  vpc_id                  = var.vpc_id
+  cidr_block              = var.private_subnet_params[11].subnet_cidr
+  availability_zone       = var.availability_zones[11].zone
   tags = {
-    Name    = "private-sa-east-1c"
+    Name    = var.private_subnet_params[11].subnet_name
     Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
   }
 }

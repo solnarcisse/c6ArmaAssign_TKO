@@ -58,8 +58,6 @@ resource "aws_launch_template" "Calif_LT" {
     tags = {
       Name    = "app1_LT"
       Service = "application1"
-      Owner   = "Chewbacca"
-      Planet  = "Mustafar"
     }
   }
 

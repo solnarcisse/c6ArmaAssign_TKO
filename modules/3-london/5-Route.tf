@@ -1,5 +1,5 @@
 resource "aws_route_table" "private" {
-  vpc_id = aws_vpc.Test-VPC01.id
+  vpc_id = var.vpc_id
 
   route = [
     {
@@ -16,6 +16,7 @@ resource "aws_route_table" "private" {
       transit_gateway_id         = ""
       vpc_endpoint_id            = ""
       vpc_peering_connection_id  = ""
+      core_network_arn           = ""
     },
   ]
 
@@ -25,7 +26,7 @@ resource "aws_route_table" "private" {
 }
 
 resource "aws_route_table" "public" {
-  vpc_id = aws_vpc.Test-VPC01.id
+  vpc_id = var.vpc_id
 
   route = [
     {
@@ -42,6 +43,7 @@ resource "aws_route_table" "public" {
       transit_gateway_id         = ""
       vpc_endpoint_id            = ""
       vpc_peering_connection_id  = ""
+      core_network_arn           = ""
     },
   ]
 
@@ -72,12 +74,12 @@ resource "aws_route_table_association" "public-eu-west-2a" {
   route_table_id = aws_route_table.public.id
 }
 
-resource "aws_route_table_association" "public-eu-west-2b" {
-  subnet_id      = aws_subnet.public-eu-west-2b.id
-  route_table_id = aws_route_table.public.id
-}
-
-# resource "aws_route_table_association" "public-eu-west-2c" {
-#   subnet_id      = aws_subnet.public-eu-west-2c.id
+# resource "aws_route_table_association" "public-eu-west-2b" {
+#   subnet_id      = aws_subnet.public-eu-west-2b.id
 #   route_table_id = aws_route_table.public.id
 # }
+
+resource "aws_route_table_association" "public-eu-west-2c" {
+  subnet_id      = aws_subnet.public-eu-west-2c.id
+  route_table_id = aws_route_table.public.id
+}

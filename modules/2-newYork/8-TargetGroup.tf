@@ -2,7 +2,7 @@ resource "aws_lb_target_group" "NY_tg" {
   name     = "NY-target-group"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = aws_vpc.NY-vpc.id
+  vpc_id   = var.vpc_id
   target_type = "instance"
 
   health_check {

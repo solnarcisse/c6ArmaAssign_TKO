@@ -4,9 +4,9 @@ resource "aws_autoscaling_group" "Calif_asg" {
   max_size              = 8
   desired_capacity      = 4
   vpc_zone_identifier   = [
-    aws_subnet.private-us-west-1a.id,
-    aws_subnet.private-us-west-1b.id,
-    # aws_subnet.private-us-west-1c.id
+    aws_subnet.public-us-west-1a.id,
+    # aws_subnet.public-us-west-1b.id,
+    aws_subnet.public-us-west-1c.id
   ]
   health_check_type          = "ELB"
   health_check_grace_period  = 300
@@ -54,8 +54,6 @@ resource "aws_autoscaling_group" "Calif_asg" {
   }
 
 }
-
-
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "Calif_scaling_policy" {
   name                   = "Calif-cpu-target"
@@ -75,5 +73,5 @@ resource "aws_autoscaling_policy" "Calif_scaling_policy" {
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "Calif_asg_attachment" {
   autoscaling_group_name = aws_autoscaling_group.Calif_asg.name
-  alb_target_group_arn   = aws_lb_target_group.Calif_tg.arn
+  lb_target_group_arn   = aws_lb_target_group.Calif_tg.arn
 }

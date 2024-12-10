@@ -13,14 +13,12 @@ data "aws_ami" "latest_linux_image" {
   }
 }
 
-
-
 resource "aws_launch_template" "app1_LT" {
   name_prefix   = "app1_LT"
   image_id      = data.aws_ami.latest_linux_image.id 
   instance_type = "t2.micro"
 
-  key_name = "MyLinuxBox"
+  # key_name = "MyLinuxBox"
 
   vpc_security_group_ids = [aws_security_group.app1-sg01-servers.id]
 
@@ -76,8 +74,6 @@ resource "aws_launch_template" "app1_LT" {
     tags = {
       Name    = "app1_LT"
       Service = "application1"
-      Owner   = "Chewbacca"
-      Planet  = "Mustafar"
     }
   }
 

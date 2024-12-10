@@ -1,12 +1,12 @@
 resource "aws_autoscaling_group" "Test-VPC01-ASG01" {
   name_prefix           = "Test-VPC01-auto-scaling-group-"
-  min_size              = 3
-  max_size              = 15
-  desired_capacity      = 6
+  min_size              = 2
+  max_size              = 8
+  desired_capacity      = 2
   vpc_zone_identifier   = [
-    aws_subnet.private-eu-west-2b.id,
-    # aws_subnet.private-eu-west-1b.id,
-    # aws_subnet.private-eu-west-1c.id
+    aws_subnet.public-eu-west-2a.id,
+    # aws_subnet.public-eu-west-2b.id,
+    aws_subnet.public-eu-west-2c.id
   ]
   health_check_type          = "ELB"
   health_check_grace_period  = 300
@@ -74,5 +74,5 @@ resource "aws_autoscaling_policy" "Test-VPC01_scaling_policy" {
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "Test-VPC01-ASG01_attachment" {
   autoscaling_group_name = aws_autoscaling_group.Test-VPC01-ASG01.name
-  alb_target_group_arn   = aws_lb_target_group.Test-VPC01-TG01.arn
+  lb_target_group_arn   = aws_lb_target_group.Test-VPC01-TG01.arn
 }

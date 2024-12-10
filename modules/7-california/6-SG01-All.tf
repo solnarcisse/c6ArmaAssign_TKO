@@ -1,7 +1,7 @@
 resource "aws_security_group" "Calif-tg01-sg01" {
   name        = "Calif-tg01-sg01"
   description = "Calif-tg01-sg01"
-  vpc_id      = aws_vpc.Calif-vpc.id
+  vpc_id      = var.vpc_id
 
   ingress {
     description = "MyHomePage"
@@ -35,12 +35,10 @@ resource "aws_security_group" "Calif-tg01-sg01" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # tags = {
-  #   Name    = "Calif-tg01-sg01"
-  #   Service = "application1"
-  # #   Owner   = "Luke"
-  # #   Planet  = "Musafar"
-  # # }
+  tags = {
+    Name    = "Calif-tg01-sg01"
+    Service = "application1"
+  }
 
 }
 
@@ -51,7 +49,7 @@ resource "aws_security_group" "Calif-tg01-sg01" {
 resource "aws_security_group" "Calif-lb01-sg01" {
   name        = "Calif-lb01-sg01"
   description = "Calif-lb01-sg01"
-  vpc_id      = aws_vpc.Calif-vpc.id
+  vpc_id      = var.vpc_id
 
   ingress {
     description = "MyHomePage"
@@ -71,8 +69,6 @@ resource "aws_security_group" "Calif-lb01-sg01" {
   tags = {
     Name    = "Calif-lb01-sg01"
     Service = "application1"
-    # Owner   = "Luke"
-    # Planet  = "Musafar"
   }
 
 }

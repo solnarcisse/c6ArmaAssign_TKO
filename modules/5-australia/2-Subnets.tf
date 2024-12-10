@@ -1,88 +1,71 @@
 #These are   for  public
 
 resource "aws_subnet" "public-ap-southeast-2a" {
-  vpc_id                  = aws_vpc.app1.id
-  cidr_block              = "10.104.1.0/24"
-  availability_zone       = "ap-southeast-2a"
-  map_public_ip_on_launch = true
+    vpc_id                  = var.vpc_id
+    cidr_block              = var.public_subnet_params[12].subnet_cidr
+    availability_zone       = var.availability_zones[12].zone
+    map_public_ip_on_launch = true
 
-  tags = {
-    Name    = "public-ap-southeast-2a"
-    Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
-  }
+    tags = {
+      Name    = var.public_subnet_params[12].subnet_name
+      Service = "application1"
+    }
 }
 
-resource "aws_subnet" "public-ap-southeast-2b" {
-  vpc_id                  = aws_vpc.app1.id
-  cidr_block              = "10.104.2.0/24"
-  availability_zone       = "ap-southeast-2b"
-  map_public_ip_on_launch = true
+# resource "aws_subnet" "public-ap-southeast-2b" {
+#    vpc_id                  = var.vpc_id
+#     cidr_block              = var.public_subnet_params[13].subnet_cidr
+#     availability_zone       = var.availability_zones[13].zone
+#     map_public_ip_on_launch = true
 
-  tags = {
-    Name    = "public-ap-southeast-2b"
-    Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
-  }
+#     tags = {
+#       Name    = var.public_subnet_params[13].subnet_name
+#       Service = "application1"
+#     }
+# }
+
+resource "aws_subnet" "public-ap-southeast-2c" {
+   vpc_id                  = var.vpc_id
+    cidr_block              = var.public_subnet_params[14].subnet_cidr
+    availability_zone       = var.availability_zones[14].zone
+    map_public_ip_on_launch = true
+
+    tags = {
+      Name    = var.public_subnet_params[14].subnet_name
+      Service = "application1"
+    }
 }
 
-
-
-/*resource "aws_subnet" "public-ap-southeast-2c" {
-  vpc_id                  = aws_vpc.app1.id
-  cidr_block              = "10.103.3.0/24"
-  availability_zone       = "ap-southeast-2c"
-  map_public_ip_on_launch = true
-
-  tags = {
-    Name    = "public-ap-southeast-2c"
-    Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
-  }
-}
-*/
 #these are for private
-resource "aws_subnet" "private-ap-southeast-2a" {
-  vpc_id            = aws_vpc.app1.id
-  cidr_block        = "10.104.11.0/24"
-  availability_zone = "ap-southeast-2a"
+# resource "aws_subnet" "private-ap-southeast-2a" {
+#     vpc_id                  = var.vpc_id
+#     cidr_block              = var.private_subnet_params[12].subnet_cidr
+#     availability_zone       = var.availability_zones[12].zone
 
-  tags = {
-    Name    = "private-ap-southeast-2a"
-    Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
-  }
-}
+#     tags = {
+#       Name    = var.private_subnet_params[12].subnet_name
+#       Service = "application1"
+#     }
+# }
 
 resource "aws_subnet" "private-ap-southeast-2b" {
-  vpc_id            = aws_vpc.app1.id
-  cidr_block        = "10.104.12.0/24"
-  availability_zone = "ap-southeast-2b"
+  vpc_id                  = var.vpc_id
+    cidr_block              = var.private_subnet_params[13].subnet_cidr
+    availability_zone       = var.availability_zones[13].zone
 
-  tags = {
-    Name    = "private-ap-southeast-2b"
-    Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
-  }
+    tags = {
+      Name    = var.private_subnet_params[13].subnet_name
+      Service = "application1"
+    }
 }
 
+# resource "aws_subnet" "private-ap-southeast-2c" {
+#     vpc_id                  = var.vpc_id
+#     cidr_block              = var.private_subnet_params[14].subnet_cidr
+#     availability_zone       = var.availability_zones[14].zone
 
-
-/*resource "aws_subnet" "private-ap-southeast-2c" {
-  vpc_id            = aws_vpc.app1.id
-  cidr_block        = "10.103.13.0/24"
-  availability_zone = "ap-southeast-2c"
-
-  tags = {
-    Name    = "private-ap-southeast-2c"
-    Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
-  }
-}
-*/
+#     tags = {
+#       Name    = var.private_subnet_params[14].subnet_name
+#       Service = "application1"
+#     }
+# }

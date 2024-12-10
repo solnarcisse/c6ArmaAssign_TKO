@@ -1,5 +1,5 @@
 resource "aws_route_table" "private" {
-  vpc_id = aws_vpc.Calif-vpc.id
+  vpc_id = var.vpc_id
 
   route = [
     {
@@ -16,6 +16,7 @@ resource "aws_route_table" "private" {
       transit_gateway_id         = ""
       vpc_endpoint_id            = ""
       vpc_peering_connection_id  = ""
+      core_network_arn           = ""
     },
   ]
 
@@ -25,7 +26,7 @@ resource "aws_route_table" "private" {
 }
 
 resource "aws_route_table" "public" {
-  vpc_id = aws_vpc.Calif-vpc.id
+  vpc_id = var.vpc_id
 
   route = [
     {
@@ -42,6 +43,7 @@ resource "aws_route_table" "public" {
       transit_gateway_id         = ""
       vpc_endpoint_id            = ""
       vpc_peering_connection_id  = ""
+      core_network_arn           = ""
     },
   ]
 
@@ -50,19 +52,21 @@ resource "aws_route_table" "public" {
   }
 }
 
-resource "aws_route_table_association" "private-us-west-1a" {
-  subnet_id      = aws_subnet.private-us-west-1a.id
-  route_table_id = aws_route_table.private.id
-}
-
-resource "aws_route_table_association" "private-us-west-1b" {
-  subnet_id      = aws_subnet.private-us-west-1b.id
-  route_table_id = aws_route_table.private.id
-}
-# resource "aws_route_table_association" "private-us-west-1c" {
-#   subnet_id      = aws_subnet.private-us-west-1c.id
+#Private Routes
+# resource "aws_route_table_association" "private-us-west-1a" {
+#   subnet_id      = aws_subnet.private-us-west-1a.id
 #   route_table_id = aws_route_table.private.id
 # }
+
+# resource "aws_route_table_association" "private-us-west-1b" {
+#   subnet_id      = aws_subnet.private-us-west-1b.id
+#   route_table_id = aws_route_table.private.id
+# }
+
+resource "aws_route_table_association" "private-us-west-1c" {
+  subnet_id      = aws_subnet.private-us-west-1c.id
+  route_table_id = aws_route_table.private.id
+}
 
 
 #public
@@ -72,12 +76,12 @@ resource "aws_route_table_association" "public-us-west-1a" {
   route_table_id = aws_route_table.public.id
 }
 
-resource "aws_route_table_association" "public-us-west-1b" {
-  subnet_id      = aws_subnet.public-us-west-1b.id
-  route_table_id = aws_route_table.public.id
-}
-
-# resource "aws_route_table_association" "public-us-west-1c" {
-#   subnet_id      = aws_subnet.public-us-west-1c.id
+# resource "aws_route_table_association" "public-us-west-1b" {
+#   subnet_id      = aws_subnet.public-us-west-1b.id
 #   route_table_id = aws_route_table.public.id
 # }
+
+resource "aws_route_table_association" "public-us-west-1c" {
+  subnet_id      = aws_subnet.public-us-west-1c.id
+  route_table_id = aws_route_table.public.id
+}

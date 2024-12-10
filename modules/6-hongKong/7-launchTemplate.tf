@@ -18,7 +18,7 @@ resource "aws_launch_template" "myApp_LT" {
   image_id      = data.aws_ami.latest_linux_image.id
   instance_type = "t2.micro"
 
-  key_name = "MyAppLinuxBox"
+  # key_name = "MyAppLinuxBox"
 
   vpc_security_group_ids = [aws_security_group.myApp-SG01-servers.id]
 

@@ -48,7 +48,7 @@ resource "aws_route_table" "public" {
 
     {
       cidr_block = var.vpc_params[0].vpc_cidr
-      gateway_id                 = aws_ec2_transit_gateway.myApp_TGW.id
+      gateway_id                 = aws_ec2_transit_gateway.HK_myApp_TGW.id
       nat_gateway_id             = ""
       carrier_gateway_id         = ""
       destination_prefix_list_id = ""
@@ -74,11 +74,31 @@ resource "aws_route_table_association" "public-ap-east-1a" {
   route_table_id = aws_route_table.public.id
 }
 
+# resource "aws_route_table_association" "public-ap-east-1b" {
+#   subnet_id      = aws_subnet.public-ap-east-1b.id
+#   route_table_id = aws_route_table.public.id
+# }
+
+resource "aws_route_table_association" "public-ap-east-1c" {
+  subnet_id      = aws_subnet.public-ap-east-1c.id
+  route_table_id = aws_route_table.public.id
+}
+
 #these are for private
-resource "aws_route_table_association" "private-ap-east-1a" {
-  subnet_id      = aws_subnet.private-ap-east-1a.id
+# resource "aws_route_table_association" "private-ap-east-1a" {
+#   subnet_id      = aws_subnet.private-ap-east-1a.id
+#   route_table_id = aws_route_table.private.id
+# }
+
+resource "aws_route_table_association" "private-ap-east-1b" {
+  subnet_id      = aws_subnet.private-ap-east-1b.id
   route_table_id = aws_route_table.private.id
 }
+
+# resource "aws_route_table_association" "private-ap-east-1c" {
+#   subnet_id      = aws_subnet.private-ap-east-1c.id
+#   route_table_id = aws_route_table.private.id
+# }
 
 #TGW----------------
 # resource "aws_ec2_transit_gateway_route_table" "TGW-RTB-OHIO-VPC-1-PROD" {

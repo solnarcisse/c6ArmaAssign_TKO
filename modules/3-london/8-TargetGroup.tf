@@ -2,7 +2,7 @@ resource "aws_lb_target_group" "Test-VPC01-TG01" {
   name     = "Test-VPC01-target-group"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = aws_vpc.Test-VPC01.id
+  vpc_id   = var.vpc_id
   target_type = "instance"
 
   health_check {
