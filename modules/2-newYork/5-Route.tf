@@ -18,6 +18,22 @@ resource "aws_route_table" "private" {
       vpc_peering_connection_id  = ""
       core_network_arn = ""
     },
+    {
+      cidr_block                 = var.vpc_params[1].vpc_cidr
+      gateway_id                 = aws_ec2_transit_gateway.newYork_myApp_TGW.id
+      nat_gateway_id             = ""
+      carrier_gateway_id         = ""
+      destination_prefix_list_id = ""
+      egress_only_gateway_id     = ""
+      instance_id                = ""
+      ipv6_cidr_block            = null
+      local_gateway_id           = ""
+      network_interface_id       = ""
+      transit_gateway_id         = ""
+      vpc_endpoint_id            = ""
+      vpc_peering_connection_id  = ""
+      core_network_arn           = ""
+    }
   ]
 
   tags = {
@@ -45,6 +61,22 @@ resource "aws_route_table" "public" {
       vpc_peering_connection_id  = ""
       core_network_arn = ""
     },
+    {
+      cidr_block                 = var.vpc_params[1].vpc_cidr
+      gateway_id                 = aws_ec2_transit_gateway.newYork_myApp_TGW.id
+      nat_gateway_id             = ""
+      carrier_gateway_id         = ""
+      destination_prefix_list_id = ""
+      egress_only_gateway_id     = ""
+      instance_id                = ""
+      ipv6_cidr_block            = null
+      local_gateway_id           = ""
+      network_interface_id       = ""
+      transit_gateway_id         = ""
+      vpc_endpoint_id            = ""
+      vpc_peering_connection_id  = ""
+      core_network_arn           = ""
+    }
   ]
 
   tags = {
@@ -82,4 +114,24 @@ resource "aws_route_table_association" "public-us-east-1a" {
 resource "aws_route_table_association" "public-us-east-1c" {
   subnet_id      = aws_subnet.public-us-east-1c.id
   route_table_id = aws_route_table.public.id
+}
+
+#TGW----------------
+resource "aws_ec2_transit_gateway_route_table" "TGW-RTB-NEW-YORK-VPC-1-PROD" {
+  transit_gateway_id = aws_ec2_transit_gateway.newYork_myApp_TGW.id
+
+  tags = {
+    "name" = "TGW-RTB-NEW-YORK-VPC-1-PROD"
+  }
+}
+
+resource "aws_ec2_transit_gateway_route" "TGW-RTB-NEW-YORK-VPC-1-A-Route1" {
+  destination_cidr_block         = "10.0.0.0/16"
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.TGA-new-york.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.TGW-RTB-NEW-YORK-VPC-1-PROD.id
+}
+
+resource "aws_ec2_transit_gateway_route_table_association" "TGW_RTB_VPC_NEW_YORK_Association_1" {
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.TGA-new-york.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.TGW-RTB-NEW-YORK-VPC-1-PROD.id
 }

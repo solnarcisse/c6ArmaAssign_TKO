@@ -9,7 +9,7 @@ resource "aws_ec2_transit_gateway" "HK_myApp_TGW" {
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "TGA-HK" {
-  subnet_ids         = [aws_subnet.public-ap-east-1a.id]
+  subnet_ids         = [aws_subnet.public-ap-east-1a.id, aws_subnet.public-ap-east-1c]
   transit_gateway_id = aws_ec2_transit_gateway.HK_myApp_TGW.id
   vpc_id             = var.vpc_id
 
