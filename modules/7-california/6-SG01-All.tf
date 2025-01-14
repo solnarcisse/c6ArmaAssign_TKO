@@ -72,3 +72,29 @@ resource "aws_security_group" "Calif-lb01-sg01" {
   }
 
 }
+
+resource "aws_security_group" "myApp-SG03-sysLogServers" {
+  name   = "myApp-SG03-sysLogServers"
+  vpc_id = var.vpc_id
+
+  ingress {
+    description = "SyslogMonitoring"
+    from_port   = 514
+    to_port     = 514
+    protocol    = "udp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name    = "myApp-SG03-sysLogServers"
+    Service = "myApp"
+    Owner   = "Uhuru"
+    Funct   = "application SG"
+  }
+}
