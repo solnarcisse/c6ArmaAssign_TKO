@@ -9,7 +9,7 @@ resource "aws_ec2_transit_gateway" "saoPaulo_myApp_TGW" {
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "TGA-sao-paulo" {
-  subnet_ids         = [aws_subnet.public-sa-east-1a, aws_subnet.public-sa-east-1c]
+  subnet_ids         = [aws_subnet.public-sa-east-1a.id, aws_subnet.public-sa-east-1c.id]
   transit_gateway_id = aws_ec2_transit_gateway.saoPaulo_myApp_TGW.id
   vpc_id             = var.vpc_id
 

@@ -5,7 +5,7 @@ resource "aws_lb" "myApp_alb" {
   security_groups    = [aws_security_group.myApp-sg02-LB01.id]
   subnets = [
     aws_subnet.private-ap-northeast-1c.id,
-    aws_subnet.private-ap-northeast-1d
+    aws_subnet.private-ap-northeast-1d.id
   ]
   enable_deletion_protection = false
   #Lots of death and suffering here, make sure it's false

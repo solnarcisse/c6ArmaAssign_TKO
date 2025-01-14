@@ -18,7 +18,7 @@ resource "aws_launch_template" "myApp_LT_SysLog" {
   image_id      = data.aws_ami.latest_linux_image.id
   instance_type = "t2.micro"
 
-  vpc_security_group_ids = [aws_security_group.myApp-SG03-sysLogServers, aws_security_group.myApp-SG01-servers]
+  vpc_security_group_ids = [aws_security_group.myApp-SG03-sysLogServers.id, aws_security_group.myApp-SG01-servers.id]
 
   user_data = filebase64("./startUpScript.sh")
 
