@@ -19,7 +19,7 @@ resource "aws_route_table" "private" {
       core_network_arn           = ""
     },
     {
-      cidr_block                 = var.vpc_params[3].vpc_cidr
+      cidr_block                 = "10.0.0.0/8"
       gateway_id                 = aws_ec2_transit_gateway.saoPaulo_myApp_TGW.id
       nat_gateway_id             = ""
       carrier_gateway_id         = ""
@@ -53,7 +53,7 @@ resource "aws_route_table" "public" {
       destination_prefix_list_id = ""
       egress_only_gateway_id     = ""
       instance_id                = ""
-      ipv6_cidr_block            = ""
+      ipv6_cidr_block            = null
       local_gateway_id           = ""
       network_interface_id       = ""
       transit_gateway_id         = ""
@@ -62,7 +62,7 @@ resource "aws_route_table" "public" {
       core_network_arn           = ""
     },
     {
-      cidr_block                 = var.vpc_params[3].vpc_cidr
+      cidr_block                 = "10.0.0.0/8"
       gateway_id                 = aws_ec2_transit_gateway.saoPaulo_myApp_TGW.id
       nat_gateway_id             = ""
       carrier_gateway_id         = ""

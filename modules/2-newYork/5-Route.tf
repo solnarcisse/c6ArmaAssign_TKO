@@ -19,7 +19,7 @@ resource "aws_route_table" "private" {
       core_network_arn = ""
     },
     {
-      cidr_block                 = var.vpc_params[1].vpc_cidr
+      cidr_block                 = "10.0.0.0/8"
       gateway_id                 = aws_ec2_transit_gateway.newYork_myApp_TGW.id
       nat_gateway_id             = ""
       carrier_gateway_id         = ""
@@ -62,7 +62,7 @@ resource "aws_route_table" "public" {
       core_network_arn = ""
     },
     {
-      cidr_block                 = var.vpc_params[1].vpc_cidr
+      cidr_block                 = "10.0.0.0/8"
       gateway_id                 = aws_ec2_transit_gateway.newYork_myApp_TGW.id
       nat_gateway_id             = ""
       carrier_gateway_id         = ""

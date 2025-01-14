@@ -29,20 +29,20 @@ resource "aws_subnet" "public-ap-northeast-1a" {
 #   }
 # }
 
-resource "aws_subnet" "public-ap-northeast-1c" {
-  # provider = "ap-northeast-1"
-  vpc_id                  = var.vpc_id
-  cidr_block              = var.public_subnet_params[1].subnet_cidr
-  availability_zone       = var.availability_zones[1].zone
-  map_public_ip_on_launch = true
+# resource "aws_subnet" "public-ap-northeast-1c" {
+#   # provider = "ap-northeast-1"
+#   vpc_id                  = var.vpc_id
+#   cidr_block              = var.public_subnet_params[1].subnet_cidr
+#   availability_zone       = var.availability_zones[1].zone
+#   map_public_ip_on_launch = true
 
-  tags = {
-    Name    = var.public_subnet_params[1].subnet_name
-    Service = "application1"
-    Owner   = "Uhuru"
-    Funct   = "ProdPub"
-  }
-}
+#   tags = {
+#     Name    = var.public_subnet_params[1].subnet_name
+#     Service = "application1"
+#     Owner   = "Uhuru"
+#     Funct   = "ProdPub"
+#   }
+# }
 
 # resource "aws_subnet" "public-ap-northeast-1d" {
 #   # provider = "ap-northeast-1"
@@ -73,18 +73,18 @@ resource "aws_subnet" "public-ap-northeast-1c" {
 #   }
 # }
 
-# resource "aws_subnet" "private-ap-northeast-1c" {
-#   vpc_id            = var.vpc_id
-#   cidr_block        = var.private_subnet_params[1].subnet_cidr
-#   availability_zone = var.availability_zones[1].zone
+resource "aws_subnet" "private-ap-northeast-1c" {
+  vpc_id            = var.vpc_id
+  cidr_block        = var.private_subnet_params[1].subnet_cidr
+  availability_zone = var.availability_zones[1].zone
 
-#   tags = {
-#     Name    = var.private_subnet_params[1].subnet_name
-#     Service = "application1"
-#     Owner   = "Uhuru"
-#     Funct   = "ProdPriv"
-#   }
-# }
+  tags = {
+    Name    = var.private_subnet_params[1].subnet_name
+    Service = "application1"
+    Owner   = "Uhuru"
+    Funct   = "ProdPriv"
+  }
+}
 
 resource "aws_subnet" "private-ap-northeast-1d" {
   vpc_id            = var.vpc_id

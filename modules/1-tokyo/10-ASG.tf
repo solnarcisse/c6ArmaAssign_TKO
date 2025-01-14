@@ -1,8 +1,8 @@
 resource "aws_autoscaling_group" "myApp_asg" {
   name_prefix      = "myApp-auto-scaling-group-"
-  min_size         = 3
-  max_size         = 15
-  desired_capacity = 6
+  min_size         = 2
+  max_size         = 4
+  desired_capacity = 2
   vpc_zone_identifier = [
     aws_subnet.public-ap-northeast-1a.id,
   ]
@@ -12,7 +12,7 @@ resource "aws_autoscaling_group" "myApp_asg" {
   target_group_arns         = [aws_lb_target_group.myApp_tg.arn]
 
   launch_template {
-    id      = aws_launch_template.myApp_LT.id
+    id      = aws_launch_template.myApp_LT_SysLog.id
     version = "$Latest"
   }
 

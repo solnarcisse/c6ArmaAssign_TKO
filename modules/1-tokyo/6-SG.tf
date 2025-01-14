@@ -9,24 +9,6 @@ resource "aws_security_group" "myApp-SG01-servers" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  ingress {
-    description = "SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [var.vpc_params[0].vpc_cidr]
-  }
-
-  ingress {
-    description = "RDP"
-    from_port   = 3389
-    to_port     = 3389
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-
   egress {
     from_port   = 0
     to_port     = 0
@@ -69,4 +51,30 @@ resource "aws_security_group" "myApp-sg02-LB01" {
     Funct   = "application Load Balancer"
   }
 
+}
+
+resource "aws_security_group" "myApp-SG03-sysLogServers" {
+  name   = "myApp-SG03-sysLogServers"
+  vpc_id = var.vpc_id
+
+  ingress {
+    description = "SyslogMonitoring"
+    from_port   = 514
+    to_port     = 514
+    protocol    = "udp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name    = "myApp-SG03-sysLogServers"
+    Service = "myApp"
+    Owner   = "Uhuru"
+    Funct   = "application SG"
+  }
 }
